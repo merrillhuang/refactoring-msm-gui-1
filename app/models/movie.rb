@@ -2,7 +2,7 @@
 #
 # Table name: movies
 #
-#  id          :integer          not null, primary key
+#  id          :bigint           not null, primary key
 #  description :text
 #  duration    :integer
 #  image       :string
@@ -13,4 +13,7 @@
 #  director_id :integer
 #
 class Movie < ApplicationRecord
+  def director
+      return Director.where({id: self.director_id}).at(0)
+  end
 end
